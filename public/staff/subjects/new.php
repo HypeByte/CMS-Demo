@@ -4,6 +4,13 @@ require_once('../../../private/initialize.php');
 
 $test = $_GET['test'] ?? '';
 
+$subject_set = find_all_subjects();
+$subject_count = mysqli_num_rows($subject_set) + 1;
+mysqli_free_result($subject_set);
+
+$subject = [];
+$subject['position'] = $subject_count;
+
 ?>
 
 <?php $page_title = 'Create Subject'; ?>
@@ -24,9 +31,17 @@ $test = $_GET['test'] ?? '';
       <dl>
         <dt>Position</dt>
         <dd>
-          <select name="position">
-            <option value="1">1</option>
-          </select>
+            <select name="position">
+                <?php
+                for($i=1; $i <= $subject_count; $i++) {
+                    echo "<option value=\"{$i}\"";
+                    if($subject["position"] == $i) {
+                        echo " selected";
+                    }
+                    echo ">{$i}</option>";
+                }
+                ?>
+            </select>
         </dd>
       </dl>
       <dl>
