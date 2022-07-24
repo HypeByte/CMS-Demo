@@ -29,7 +29,7 @@ $subject['position'] = $subject_count;
   <div class="page new">
     <h1>Create Page</h1>
 
-    <form action="<?php echo url_for('/staff/pages/new.php'); ?>" method="post">
+    <form action="<?php echo url_for('/staff/pages/create.php'); ?>" method="post">
       <dl>
         <dt>Menu Name</dt>
         <dd><input type="text" name="menu_name" value="" /></dd>
@@ -37,7 +37,7 @@ $subject['position'] = $subject_count;
       <dl>
         <dt>Subject</dt>
          <dd>
-           <select name="subject">
+           <select name="subject_id">
               <?php
               for($i=1; $i <= $subject_count; $i++) {
                   echo "<option value=\"{$i}\"";

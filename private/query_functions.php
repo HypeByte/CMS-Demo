@@ -123,5 +123,27 @@
 
   }
 
+  function insert_page($page) {
+    global $db;
+
+    $sql = "INSERT INTO pages ";
+    $sql .= "(menu_name, subject_id, position, visible) ";
+    $sql .= "VALUES (";
+    $sql .= "'" . $page['menu_name'] . "',";
+    $sql .= "'" . $page['subject_id'] . "',";
+    $sql .= "'" . $page['position'] . "',";
+    $sql .= "'" . $page['visible'] . "'";
+    $sql .= ")";
+    $result = mysqli_query($db, $sql);
+
+    if($result) {
+      return true;
+    }
+    else {
+      echo mysqli_error($db);
+      db_disconnect($db);
+      exit;
+    }
+  }
 
 ?>
