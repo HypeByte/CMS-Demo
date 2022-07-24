@@ -24,6 +24,18 @@
   return $subject; // returns an assoc. array
 }
 
+  function find_subject_by_position($position) {
+    global $db;
+
+    $sql = "SELECT * FROM subjects ";
+    $sql .= "WHERE position='" . $position . "'";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    $subject = mysqli_fetch_assoc($result);
+    mysqli_free_result($result);
+    return $subject; // returns an assoc. array
+  }
+
   function insert_subject($subject) {
     global $db;
 

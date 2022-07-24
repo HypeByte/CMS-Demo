@@ -2,7 +2,6 @@
 
 require_once('../../../private/initialize.php');
 
-$test = $_GET['test'] ?? '';
 
 $subject_set = find_all_subjects();
 $subject_count = mysqli_num_rows($subject_set) + 1;
