@@ -1,2 +1,5 @@
 #ignore .idea
 .idea
+
+#hide database credentials
+private/db_credentials.php
