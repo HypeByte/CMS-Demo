@@ -18,6 +18,7 @@
 
     $sql = "SELECT * FROM subjects ";
     $sql .= "WHERE id='" . db_escape($db, $id) . "'";
+    // echo $sql;
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
     $subject = mysqli_fetch_assoc($result);
@@ -167,6 +168,11 @@
     } elseif(!has_length($page['menu_name'], ['min' => 2, 'max' => 255])) {
       $errors[] = "Name must be between 2 and 255 characters.";
     }
+    $current_id = $page['id'] ?? '0';
+    if(!has_unique_page_menu_name($page['menu_name'], $current_id)) {
+      $errors[] = "Menu name must be unique.";
+    }
+
 
     // position
     // Make sure we are working with an integer

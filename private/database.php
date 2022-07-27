@@ -14,6 +14,10 @@
     }
   }
 
+  function db_escape($connection, $string) {
+    return mysqli_real_escape_string($connection, $string);
+  }
+
   function confirm_db_connect() {
     if(mysqli_connect_errno()) {
       $msg = "Database connection failed: ";
@@ -21,10 +25,6 @@
       $msg .= " (" . mysqli_connect_errno() . ")";
       exit($msg);
     }
-  }
-
-  function db_escape($connection, $string) {
-    return mysqli_real_escape_string($connection, $string);
   }
 
   function confirm_result_set($result_set) {

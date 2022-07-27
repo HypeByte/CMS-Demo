@@ -2,6 +2,10 @@
 
 require_once('../../../private/initialize.php');
 
+$subject_set = find_all_subjects();
+$subject_count = mysqli_num_rows($subject_set) + 1;
+mysqli_free_result($subject_set);
+
 if(is_post_request()) {
 
   $subject = [];
@@ -24,10 +28,6 @@ if(is_post_request()) {
   $subject["position"] = $subject_count;
   $subject["visible"] = '';
 }
-
-$subject_set = find_all_subjects();
-$subject_count = mysqli_num_rows($subject_set) + 1;
-mysqli_free_result($subject_set);
 
 ?>
 
