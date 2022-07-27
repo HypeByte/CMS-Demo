@@ -10,6 +10,7 @@ $page_id = $page_id ?? '';
   <?php $nav_subjects = find_all_subjects(); ?>
   <ul class="subjects">
     <?php while($nav_subject = mysqli_fetch_assoc($nav_subjects)) { ?>
+      <?php if($nav_subject['visible']) { ?>
       <li class="<?php if($nav_subject['id'] == $subject_id) {echo 'selected';} ?>">
         <a href="<?php echo url_for('index.php?subject_id=' . h(u($nav_subject['id']))); ?>">
           <?php echo h($nav_subject['menu_name']); ?>
@@ -17,7 +18,7 @@ $page_id = $page_id ?? '';
           <?php $nav_pages = find_pages_by_subject_id($nav_subject['id']); ?>
           <ul class="pages">
               <?php while($nav_page = mysqli_fetch_assoc($nav_pages)) { ?>
-                  <?php if($nav_page['subject_id'] == $subject_id) { ?>
+                  <?php if($nav_page['subject_id'] == $subject_id and $nav_page['visible']) { ?>
                       <li class="<?php if($nav_page['id'] == $page_id) {echo 'selected';} ?>">
                           <a href="<?php echo url_for('index.php?id=' . h(u($nav_page['id']))); ?>">
                               <?php echo h($nav_page['menu_name']); ?>
@@ -27,7 +28,7 @@ $page_id = $page_id ?? '';
           </ul>
           <?php mysqli_free_result($nav_pages); ?>
       </li>
-    <?php } // while $nav_subjects ?>
+    <?php } } // while $nav_subjects ?>
   </ul>
   <?php mysqli_free_result($nav_subjects); ?>
 </nav>
