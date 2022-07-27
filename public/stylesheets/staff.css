@@ -27,21 +27,21 @@ header h1 {
   text-align: center;
 }
 
-navigation {
+nav {
   width: 980px;
   margin: 0;
   padding: 0;
   text-align: center;
 }
 
-navigation ul {
+nav ul {
   width: 980px;
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-navigation ul li {
+nav ul li {
   display: inline;
   margin-right: 1em;
 }
