@@ -10,6 +10,7 @@
   define("SHARED_PATH", PRIVATE_PATH . '/shared');
 
   // Assign the root URL to a PHP constant
+  // * Do not need to include the domain
   // * Can dynamically find everything in URL up to "/public"
   $public_end = strpos($_SERVER['SCRIPT_NAME'], '/public') + 7;
   $doc_root = substr($_SERVER['SCRIPT_NAME'], 0, $public_end);

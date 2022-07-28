@@ -2,7 +2,7 @@
 
   // Subjects
 
-  function find_all_subjects($options = []) {
+  function find_all_subjects($options=[]) {
     global $db;
 
     $visible = $options['visible'] ?? false;
@@ -18,16 +18,17 @@
     return $result;
   }
 
-  function find_subject_by_id($id, $options = []) {
+  function find_subject_by_id($id, $options=[]) {
     global $db;
 
     $visible = $options['visible'] ?? false;
 
     $sql = "SELECT * FROM subjects ";
-    $sql .= "WHERE id='" . db_escape($db, $id) . "'";
+    $sql .= "WHERE id='" . db_escape($db, $id) . "' ";
     if($visible) {
-      $sql .= "AND visible = true ";
+      $sql .= "AND visible = true";
     }
+    // echo $sql;
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
     $subject = mysqli_fetch_assoc($result);
@@ -141,30 +142,25 @@
 
   // Pages
 
-  function find_all_pages($options = []) {
+  function find_all_pages() {
     global $db;
 
-    $visible = $options['visible'] ?? false;
-
     $sql = "SELECT * FROM pages ";
-    if($visible) {
-      $sql .= "WHERE visible = true ";
-    }
     $sql .= "ORDER BY subject_id ASC, position ASC";
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
     return $result;
   }
 
-  function find_page_by_id($id, $options = []) {
+  function find_page_by_id($id, $options=[]) {
     global $db;
 
     $visible = $options['visible'] ?? false;
 
     $sql = "SELECT * FROM pages ";
-    $sql .= "WHERE id='" . db_escape($db, $id) . "'";
+    $sql .= "WHERE id='" . db_escape($db, $id) . "' ";
     if($visible) {
-      $sql .= "AND visible = true ";
+      $sql .= "AND visible = true";
     }
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
@@ -296,7 +292,7 @@
     }
   }
 
-  function find_pages_by_subject_id($subject_id, $options = []) {
+  function find_pages_by_subject_id($subject_id, $options=[]) {
     global $db;
 
     $visible = $options['visible'] ?? false;
@@ -309,7 +305,8 @@
     $sql .= "ORDER BY position ASC";
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
-    return $result; // returns an assoc. array
+    return $result;
   }
+
 
 ?>
