@@ -24,4 +24,4 @@
       </ul>
     </nav>
 
-  <?php echo display_session_message(); ?>
+    <?php echo display_session_message(); ?>
