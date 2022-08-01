@@ -1,14 +1,15 @@
 <?php
 
 require_once('../../../private/initialize.php');
-
+require_login();
 if(!isset($_GET['id'])) {
   redirect_to(url_for('/staff/admins/index.php'));
 }
 $id = $_GET['id'];
 
 if(is_post_request()) {
-  $result = delete_admin($id);
+  $admin = find_admin_by_id($id);
+  $result = delete_admin($admin);
   $_SESSION['message'] = 'Admin deleted.';
   redirect_to(url_for('/staff/admins/index.php'));
 } else {
