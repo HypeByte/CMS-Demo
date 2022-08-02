@@ -23,6 +23,7 @@
         <th>Position</th>
         <th>Visible</th>
   	    <th>Name</th>
+        <th>Pages</th>
   	    <th>&nbsp;</th>
   	    <th>&nbsp;</th>
         <th>&nbsp;</th>
@@ -33,7 +34,8 @@
           <td><?php echo h($subject['id']); ?></td>
           <td><?php echo h($subject['position']); ?></td>
           <td><?php echo $subject['visible'] == 1 ? 'true' : 'false'; ?></td>
-    	    <td><?php echo h($subject['menu_name']); ?></td>
+    	  <td><?php echo h($subject['menu_name']); ?></td>
+          <td><?php echo count_pages_by_subject_id($subject['id']); ?></td>
           <td><a class="action" href="<?php echo url_for('/staff/subjects/show.php?id=' . h(u($subject['id']))); ?>">View</a></td>
           <td><a class="action" href="<?php echo url_for('/staff/subjects/edit.php?id=' . h(u($subject['id']))); ?>">Edit</a></td>
           <td><a class="action" href="<?php echo url_for('/staff/subjects/delete.php?id=' . h(u($subject['id']))); ?>">Delete</a></td>
